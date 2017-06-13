@@ -6,7 +6,11 @@ import './RecipesContainer.css'
 
 class RecipesContainer extends PureComponent {
   renderRecipe(recipe, index) {
-    return <RecipeItem key={index} { ...recipe } />
+    const { toggleLike } = this.props
+
+    return <RecipeItem
+      key={index} { ...recipe }
+      toggleLike={toggleLike} />
   }
 
   render() {
@@ -17,7 +21,7 @@ class RecipesContainer extends PureComponent {
         </header>
 
         <main>
-          { this.props.recipes.map(this.renderRecipe) }
+          { this.props.recipes.map(this.renderRecipe.bind(this)) }
         </main>
       </div>
     )

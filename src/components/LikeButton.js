@@ -5,16 +5,8 @@ import HeartRed from '../images/heart-red.svg'
 import './LikeButton.css'
 
 class LikeButton extends PureComponent {
-  constructor() {
-    super()
-
-    this.state = {
-      liked: false
-    }
-  }
-
   classNames() {
-    const { liked } = this.state
+    const { liked } = this.props
     const classes = 'LikeButton'
 
     if (liked) return classes + ' liked'
@@ -22,20 +14,12 @@ class LikeButton extends PureComponent {
     return classes
   }
 
-  toggleLike() {
-    const { liked } = this.state
-
-    this.setState({
-      liked: !!!liked
-    })
-  }
-
   render() {
-    const { liked } = this.state
+    const { liked, onChange } = this.props
 
     return (
       <p className={ this.classNames() }>
-        <button onClick={ this.toggleLike.bind(this) }>
+        <button onClick={ onChange }>
           <img className="heart" alt="liked" src={ liked ? HeartRed : HeartGrey } />
           <span className="copy">
             <img className="heart" alt="not liked" src={ liked ? HeartRed : HeartGrey } />
