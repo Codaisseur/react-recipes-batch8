@@ -15,7 +15,7 @@ class LikeButton extends PureComponent {
 
   classNames() {
     const { liked } = this.state
-    const classes = 'like'
+    const classes = 'LikeButton'
 
     if (liked) return classes + ' liked'
 
