@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import Title from './components/Title'
+import RecipesContainer from './recipes/RecipesContainer'
+import recipes from './seeds/recipes'
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Title content="All Recipes" />
+        <RecipesContainer recipes={recipes} />
       </div>
     )
   }
