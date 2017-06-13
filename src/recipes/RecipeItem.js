@@ -1,10 +1,11 @@
 // src/recipes/RecipeItem.js
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import Pescatarian from '../images/pescatarian.svg'
-import Vegetarian from '../images/vegetarian.svg'
-import Vegan from '../images/vegan.svg'
 import LikeButton from '../components/LikeButton'
+import RecipeCategory from './RecipeCategory'
+import './RecipeItem.css'
+
+const PLACEHOLDER = 'http://via.placeholder.com/500x180?text=No%20Image'
 
 class RecipeItem extends PureComponent {
   static propTypes = {
@@ -16,20 +17,26 @@ class RecipeItem extends PureComponent {
   }
 
   render() {
-    const { title, summary, vegan, vegetarian, pescatarian } = this.props
+    const { title, summary, vegan, vegetarian, pescatarian, photo } = this.props
+    const categories = { vegan, vegetarian, pescatarian }
 
     return(
       <article className="recipe">
-        <h1>{ title }</h1>
-        <div>
-          <p>{ summary }</p>
-          <ul>
-            { vegan && <li><img src={Vegan} alt="vegan" /></li> }
-            { !vegan && vegetarian && <li><img src={Vegetarian} alt="vegetarian" /></li> }
-            { pescatarian && <li><img src={Pescatarian} alt="pescatarian" /></li> }
+        <header>
+          <div
+            className="cover"
+            style={{ backgroundImage: `url(${photo || PLACEHOLDER })` }} />
+          <h1>{ title }</h1>
+          <ul className="categories">
+            <RecipeCategory { ...categories } />
           </ul>
-          <LikeButton />
-        </div>
+        </header>
+        <main>
+          <p>{ summary }</p>
+        </main>
+        <footer>
+          <LikeButton  />
+        </footer>
       </article>
     )
   }
