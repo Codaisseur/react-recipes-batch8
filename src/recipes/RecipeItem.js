@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import ReactMarkdown from 'react-markdown'
 import LikeButton from '../components/LikeButton'
 import RecipeCategory from './RecipeCategory'
 import toggleLike from '../actions/recipes/toggleLike'
@@ -51,7 +52,7 @@ export class RecipeItem extends PureComponent {
           </ul>
         </header>
         <main>
-          <p>{ summary }</p>
+          <ReactMarkdown source={summary} />
         </main>
         <footer>
           <LikeButton
