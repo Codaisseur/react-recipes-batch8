@@ -1,13 +1,15 @@
 // src/recipes/RecipeItem.js
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 import LikeButton from '../components/LikeButton'
 import RecipeCategory from './RecipeCategory'
+import toggleLike from '../actions/recipes/toggleLike'
 import './RecipeItem.css'
 
 const PLACEHOLDER = 'http://via.placeholder.com/500x180?text=No%20Image'
 
-class RecipeItem extends PureComponent {
+export class RecipeItem extends PureComponent {
   static propTypes = {
     _id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -22,7 +24,6 @@ class RecipeItem extends PureComponent {
   toggleLike() {
     const { _id } = this.props
     this.props.toggleLike(_id)
-    console.log('RecipeItem:', _id)
   }
 
   render() {
@@ -62,4 +63,4 @@ class RecipeItem extends PureComponent {
   }
 }
 
-export default RecipeItem
+export default connect(null, { toggleLike })(RecipeItem)

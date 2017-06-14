@@ -1,16 +1,13 @@
 // src/recipes/RecipesContainer.js
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 import Title from '../components/Title'
 import RecipeItem from './RecipeItem'
 import './RecipesContainer.css'
 
-class RecipesContainer extends PureComponent {
+export class RecipesContainer extends PureComponent {
   renderRecipe(recipe, index) {
-    const { toggleLike } = this.props
-
-    return <RecipeItem
-      key={index} { ...recipe }
-      toggleLike={toggleLike} />
+    return <RecipeItem key={index} { ...recipe }  />
   }
 
   render() {
@@ -28,4 +25,6 @@ class RecipesContainer extends PureComponent {
   }
 }
 
-export default RecipesContainer
+const mapStateToProps = ({ recipes }) => ({ recipes })
+
+export default connect(mapStateToProps)(RecipesContainer)
