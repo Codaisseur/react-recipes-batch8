@@ -24,6 +24,7 @@
     "chai-enzyme": "^0.7.1",
     "chai-spies": "^0.7.1",
     "enzyme": "^2.8.2",
+    "eslint": "^4.0.0",
     "node-sass-chokidar": "^0.0.2",
     "npm-run-all": "^4.0.2",
     "prop-types": "^15.5.10",
