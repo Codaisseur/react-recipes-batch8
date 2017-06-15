@@ -19,13 +19,16 @@
     "to-markdown": "^3.0.4"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "breakpoint-sass": "^2.7.1",
     "chai": "3.x",
     "chai-enzyme": "^0.7.1",
     "chai-spies": "^0.7.1",
     "enzyme": "^2.8.2",
-    "eslint": "^4.0.0",
+    "eslint": "3.19.0",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-class-property": "^1.0.6",
     "node-sass-chokidar": "^0.0.2",
     "npm-run-all": "^4.0.2",
     "prop-types": "^15.5.10",
@@ -39,6 +42,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint src/"
   }
 }
