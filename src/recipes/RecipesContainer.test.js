@@ -10,9 +10,15 @@ import RecipeItem from './RecipeItem'
 import recipes from '../seeds/recipes'
 
 chai.use(chaiEnzyme())
+chai.use(spies)
 
 describe('<RecipesContainer />', () => {
-  const container = shallow(<RecipesContainer recipes={recipes} />)
+  const fetchRecipes = chai.spy()
+  const container = shallow(
+    <RecipesContainer
+      recipes={recipes}
+      fetchRecipes={fetchRecipes} />
+  )
 
   it('is wrapped in a div with class name "recipes"', () => {
     expect(container).to.have.className('wrapper')
@@ -29,5 +35,17 @@ describe('<RecipesContainer />', () => {
 
   it('renders all recipes as a RecipeItem', () => {
     expect(container).to.have.exactly(recipes.length).descendants(RecipeItem)
+  })
+
+  it('calls fetchRecipes in componentWillMount', () => {
+    fetchRecipes.reset()
+
+    const container = shallow(
+      <RecipesContainer
+        recipes={recipes}
+        fetchRecipes={fetchRecipes} />
+    )
+
+    expect(fetchRecipes).to.have.been.called.exactly.once()
   })
 })
