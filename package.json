@@ -19,6 +19,7 @@
     "to-markdown": "^3.0.4"
   },
   "devDependencies": {
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "breakpoint-sass": "^2.7.1",
     "chai": "3.x",
     "chai-enzyme": "^0.7.1",
