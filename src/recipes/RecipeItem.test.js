@@ -5,9 +5,6 @@ import spies from 'chai-spies'
 import { shallow } from 'enzyme'
 import chaiEnzyme from 'chai-enzyme'
 import { RecipeItem } from './RecipeItem'
-import Pescatarian from '../images/pescatarian.svg'
-import Vegetarian from '../images/vegetarian.svg'
-import Vegan from '../images/vegan.svg'
 
 chai.use(chaiEnzyme())
 chai.use(spies)

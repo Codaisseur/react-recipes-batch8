@@ -2,8 +2,6 @@
 import React from 'react'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
-import { Provider } from 'react-redux'
-import store from './store'
 import App from './App'
 import RecipesContainer from './recipes/RecipesContainer'
 

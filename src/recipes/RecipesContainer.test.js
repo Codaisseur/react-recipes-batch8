@@ -40,11 +40,10 @@ describe('<RecipesContainer />', () => {
   it('calls fetchRecipes in componentWillMount', () => {
     fetchRecipes.reset()
 
-    const container = shallow(
+    shallow(
       <RecipesContainer
         recipes={recipes}
-        fetchRecipes={fetchRecipes} />
-    )
+        fetchRecipes={fetchRecipes} />)
 
     expect(fetchRecipes).to.have.been.called.exactly.once()
   })
