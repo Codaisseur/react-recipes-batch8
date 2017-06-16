@@ -2,7 +2,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
-import Paper from 'material-ui/Paper';
+import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import FlatButton from 'material-ui/FlatButton'
@@ -21,7 +21,13 @@ const buttonStyle = {
 }
 
 export class SignIn extends PureComponent {
+  static propTypes = {
+    push: PropTypes.func.isRequired,
+    signIn: PropTypes.func.isRequired,
+  }
+
   submitForm(event) {
+    event.preventDefault()
     const user = {
       email: this.refs.email.getValue(),
       password: this.refs.password.getValue(),
@@ -36,7 +42,7 @@ export class SignIn extends PureComponent {
   render() {
     return (
       <Paper style={ dialogStyle }>
-        <Title content="Sign In" />
+        <Title content="Sign In" level={2} />
 
         <form onSubmit={this.submitForm.bind(this)}>
           <div className="input">

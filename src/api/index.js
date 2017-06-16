@@ -1,7 +1,6 @@
 // src/api/index.js
 
 import client from './client'
-import { FEATHERS_TOKEN_KEY } from './client'
 
 // API Client
 // -----------------------------------------------------------------------------
