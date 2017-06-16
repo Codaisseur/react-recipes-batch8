@@ -20,15 +20,18 @@ class LoadErrorMessage extends Component {
     this.props.clearError()
   }
 
-  componentWillReceiveProps(nextProps) {
-    const { message, error } = nextProps
-    const oldMessage = this.props.message
-
-    if (error && message !== oldMessage) {
-      this.setState({
-        open: true,
-      })
+  componentWillMount() {
+    if (this.props.error) {
+      this.setState({ open: true })
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { error } = nextProps
+
+    this.setState({
+      open: error,
+    })
   }
 
   render() {

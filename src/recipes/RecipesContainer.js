@@ -5,8 +5,8 @@ import { connect } from 'react-redux'
 import Title from '../components/Title'
 import RecipeItem from './RecipeItem'
 import './RecipesContainer.css'
-import RecipeEditor from './RecipeEditor'
 import fetchRecipes from '../actions/recipes/fetch'
+import CreateRecipeButton from './CreateRecipeButton'
 
 export class RecipesContainer extends PureComponent {
   static propTypes = {
@@ -27,11 +27,10 @@ export class RecipesContainer extends PureComponent {
       <div className="recipes wrapper">
         <header>
           <Title content="All Recipes" />
+          <CreateRecipeButton />
         </header>
 
         <main>
-          <RecipeEditor />
-
           { this.props.recipes.map(this.renderRecipe.bind(this)) }
         </main>
       </div>

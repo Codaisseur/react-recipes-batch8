@@ -10,6 +10,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin'
 import App from './App'
 import RecipesContainer from './recipes/RecipesContainer'
 import RecipePage from './recipes/RecipePage'
+import RecipeEditor from './recipes/RecipeEditor'
 import SignUp from './users/SignUp'
 import SignIn from './users/SignIn'
 
@@ -25,6 +26,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={RecipesContainer} />
         <Route path="/recipes/:recipeId" component={RecipePage} />
+        <Route path="/create-recipe" component={RecipeEditor} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
       </Route>

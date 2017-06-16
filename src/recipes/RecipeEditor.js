@@ -3,7 +3,9 @@ import React, { PureComponent } from 'react'
 import Editor from 'react-medium-editor'
 import toMarkdown from 'to-markdown'
 import { connect } from 'react-redux'
+import { replace } from 'react-router-redux'
 import createRecipe from '../actions/recipes/create'
+import { showError } from '../actions/loading'
 import 'medium-editor/dist/css/medium-editor.css'
 import 'medium-editor/dist/css/themes/default.css'
 import './RecipeEditor.css'
@@ -28,6 +30,14 @@ class RecipeEditor extends PureComponent {
       pescatarian,
       photo,
       errors: {},
+    }
+  }
+
+  componentWillMount() {
+    const { replace, signedIn, showError } = this.props
+    if (!signedIn) {
+      showError('You need to be signed up to create recipes!')
+      replace('/sign-up')
     }
   }
 
@@ -152,4 +162,7 @@ class RecipeEditor extends PureComponent {
   }
 }
 
-export default connect(null, { createRecipe })(RecipeEditor)
+const mapStateToProps = ({ currentUser }) => ({
+  signedIn: !!currentUser && !!currentUser._id,
+})
+export default connect(mapStateToProps, { createRecipe, replace, showError })(RecipeEditor)

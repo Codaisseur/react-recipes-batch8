@@ -21,6 +21,10 @@ export class RecipeItem extends PureComponent {
     pescatarian: PropTypes.bool,
     liked: PropTypes.bool,
     toggleLike: PropTypes.func.isRequired,
+    author: PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
   }
 
   toggleLike() {
@@ -38,6 +42,7 @@ export class RecipeItem extends PureComponent {
       pescatarian,
       photo,
       liked,
+      author,
     } = this.props
 
     const categories = { vegan, vegetarian, pescatarian }
@@ -51,6 +56,7 @@ export class RecipeItem extends PureComponent {
           <h1>
             <Link to={`/recipes/${_id}`}>{ title }</Link>
           </h1>
+          <p className="author">By: { author.name }</p>
           <ul className="categories">
             <RecipeCategory { ...categories } />
           </ul>
