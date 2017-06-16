@@ -1,4 +1,5 @@
 import { USER_SIGNED_IN } from '../actions/user/sign-in'
+import { USER_SIGNED_OUT } from '../actions/user/sign-out'
 
 const currentUserKey = 'recipesUserb8'
 const currentUserFromLocalStorage = JSON.parse(
@@ -11,6 +12,10 @@ export default (state = currentUserFromLocalStorage, { type, payload } = {}) => 
       const currentUser = { ...payload }
       window.localStorage.setItem(currentUserKey, JSON.stringify(currentUser))
       return currentUser
+
+    case USER_SIGNED_OUT :
+      window.localStorage.removeItem(currentUserKey)
+      return null
 
     default :
       return state

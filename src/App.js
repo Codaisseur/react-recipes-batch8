@@ -4,6 +4,7 @@ import Loading from './components/Loading'
 import LoadErrorMessage from './components/LoadErrorMessage'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import muiTheme from './styles/theme'
+import Navigation from './components/Navigation'
 
 import './App.css'
 
@@ -21,8 +22,9 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
           <Loading />
-          <LoadErrorMessage />
+          <Navigation />
           { this.props.children }
+          <LoadErrorMessage />
         </div>
       </MuiThemeProvider>
     )
