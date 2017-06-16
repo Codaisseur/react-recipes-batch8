@@ -8,6 +8,7 @@ import './RecipesContainer.css'
 import fetchRecipes from '../actions/recipes/fetch'
 import subscribeToRecipesService from '../actions/recipes/subscribe'
 import CreateRecipeButton from './CreateRecipeButton'
+import Search from './Search'
 
 export class RecipesContainer extends PureComponent {
   static propTypes = {
@@ -33,6 +34,8 @@ export class RecipesContainer extends PureComponent {
         </header>
 
         <main>
+          <Search />
+
           { this.props.recipes.map(this.renderRecipe.bind(this)) }
         </main>
       </div>
