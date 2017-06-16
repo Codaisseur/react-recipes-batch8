@@ -1,8 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import loadingImage from '../images/loading.gif'
-import './Loading.css'
+import LinearProgress from 'material-ui/LinearProgress'
 
 class Loading extends PureComponent {
   static propTypes = {
@@ -13,11 +12,7 @@ class Loading extends PureComponent {
     if (this.props.ready) return null
 
     return (
-      <div className="Loading">
-        <img src={loadingImage} alt="Loading..." />
-        <p>Loading...</p>
-        { this.props.children }
-      </div>
+      <LinearProgress mode="indeterminate" />
     )
   }
 }

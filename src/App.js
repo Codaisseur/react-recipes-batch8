@@ -20,9 +20,9 @@ class App extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
+          <Loading />
           <LoadErrorMessage />
           { this.props.children }
-          <Loading />
         </div>
       </MuiThemeProvider>
     )
