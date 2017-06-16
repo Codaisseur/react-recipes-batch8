@@ -22,8 +22,8 @@ class App extends Component {
       <MuiThemeProvider muiTheme={muiTheme}>
         <div className="App">
           <LoadErrorMessage />
-          <Loading />
           <RecipesContainer />
+          <Loading />
         </div>
       </MuiThemeProvider>
     )
