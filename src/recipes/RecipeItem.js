@@ -8,6 +8,7 @@ import RecipeCategory from './RecipeCategory'
 import toggleLike from '../actions/recipes/toggleLike'
 import './RecipeItem.css'
 import { Link } from 'react-router'
+import CookingTime from './CookingTime'
 
 const PLACEHOLDER = 'http://via.placeholder.com/500x180?text=No%20Image'
 
@@ -43,6 +44,7 @@ export class RecipeItem extends PureComponent {
       photo,
       liked,
       author,
+      cookingTime
     } = this.props
 
     const categories = { vegan, vegetarian, pescatarian }
@@ -57,6 +59,7 @@ export class RecipeItem extends PureComponent {
             <Link to={`/recipes/${_id}`}>{ title }</Link>
           </h1>
           <p className="author">By: { author.name }</p>
+          <CookingTime time={cookingTime} />
           <ul className="categories">
             <RecipeCategory { ...categories } />
           </ul>
