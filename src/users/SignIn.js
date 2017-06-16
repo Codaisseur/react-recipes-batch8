@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { push } from 'react-router-redux'
+import { replace, push } from 'react-router-redux'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
@@ -24,6 +24,12 @@ export class SignIn extends PureComponent {
   static propTypes = {
     push: PropTypes.func.isRequired,
     signIn: PropTypes.func.isRequired,
+    signedIn: PropTypes.bool,
+  }
+
+  componentWillMount() {
+    const { replace, signedIn } = this.props
+    if (signedIn) replace('/')
   }
 
   submitForm(event) {
@@ -65,4 +71,8 @@ export class SignIn extends PureComponent {
   }
 }
 
-export default connect(null, { signIn, push })(SignIn)
+const mapStateToProps = ({ currentUser }) => ({
+  signedIn: !!currentUser && !!currentUser._id,
+})
+
+export default connect(mapStateToProps, { signIn, replace, push })(SignIn)

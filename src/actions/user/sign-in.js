@@ -1,5 +1,5 @@
 // src/actions/user/sign-in.js
-
+import { history } from '../../store'
 import API from '../../api'
 import {
   APP_LOADING,
@@ -23,9 +23,9 @@ export default (user) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
 
-
         api.app.set('user', user)
-        console.log('User', api.app.get('user'))
+
+        history.replace('/')
 
         dispatch({
           type: USER_SIGNED_IN,
