@@ -33,8 +33,8 @@ class RecipeEditor extends PureComponent {
     }
   }
 
-  componentWillMount() {
-    const { replace, signedIn, showError } = this.props
+  componentWillReceiveProps(newProps) {
+    const { replace, signedIn, showError } = newProps
     if (!signedIn) {
       showError('You need to be signed up to create recipes!')
       replace('/sign-up')
