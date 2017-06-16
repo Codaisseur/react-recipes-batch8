@@ -7,6 +7,7 @@ import LikeButton from '../components/LikeButton'
 import RecipeCategory from './RecipeCategory'
 import toggleLike from '../actions/recipes/toggleLike'
 import './RecipeItem.css'
+import { Link } from 'react-router'
 
 const PLACEHOLDER = 'http://via.placeholder.com/500x180?text=No%20Image'
 
@@ -29,6 +30,7 @@ export class RecipeItem extends PureComponent {
 
   render() {
     const {
+      _id,
       title,
       summary,
       vegan,
@@ -46,7 +48,9 @@ export class RecipeItem extends PureComponent {
           <div
             className="cover"
             style={{ backgroundImage: `url(${photo || PLACEHOLDER })` }} />
-          <h1>{ title }</h1>
+          <h1>
+            <Link to={`/recipes/${_id}`}>{ title }</Link>
+          </h1>
           <ul className="categories">
             <RecipeCategory { ...categories } />
           </ul>

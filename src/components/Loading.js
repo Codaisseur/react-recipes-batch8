@@ -16,6 +16,7 @@ class Loading extends PureComponent {
       <div className="Loading">
         <img src={loadingImage} alt="Loading..." />
         <p>Loading...</p>
+        { this.props.children }
       </div>
     )
   }

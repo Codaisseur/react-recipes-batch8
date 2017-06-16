@@ -3,7 +3,8 @@ import React from 'react'
 import chai, { expect } from 'chai'
 import chaiEnzyme from 'chai-enzyme'
 import App from './App'
-import RecipesContainer from './recipes/RecipesContainer'
+import LoadErrorMessage from './components/LoadErrorMessage'
+import Loading from './components/Loading'
 
 chai.use(chaiEnzyme())
 
@@ -14,7 +15,8 @@ describe('<App />', () => {
     expect(app).to.have.tagName('div')
   })
 
-  it('contains the RecipesContainer', () => {
-    expect(app).to.have.descendants(RecipesContainer)
+  it('contains loading indicators', () => {
+    expect(app).to.have.descendants(Loading)
+    expect(app).to.have.descendants(LoadErrorMessage)
   })
 })

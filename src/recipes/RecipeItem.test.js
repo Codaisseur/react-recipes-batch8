@@ -2,7 +2,7 @@
 import React from 'react'
 import chai, { expect } from 'chai'
 import spies from 'chai-spies'
-import { shallow } from 'enzyme'
+import { render } from 'enzyme'
 import chaiEnzyme from 'chai-enzyme'
 import { RecipeItem } from './RecipeItem'
 
@@ -21,14 +21,14 @@ const recipe = {
 
 describe('<RecipeItem />', () => {
   const toggleLike = chai.spy()
-  const container = shallow(<RecipeItem { ...recipe } toggleLike={toggleLike} />)
+  const container = render(<RecipeItem { ...recipe } toggleLike={toggleLike} />)
 
   it('is wrapped in a article tag with class name "recipe"', () => {
     expect(container).to.have.tagName('article')
     expect(container).to.have.className('recipe')
   })
 
-  it('contains a the title', () => {
+  it('contains the title of the recipe', () => {
     expect(container.find('h1')).to.have.text(recipe.title)
   })
 })
