@@ -1,6 +1,5 @@
 // src/reducers/recipes.js
 import { FETCHED_RECIPES } from '../actions/recipes/fetch'
-import { TOGGLE_LIKE_RECIPE } from '../actions/recipes/toggleLike'
 import {
   RECIPE_CREATED,
   RECIPE_UPDATED,
@@ -26,15 +25,6 @@ export default (state = [], { type, payload } = {}) => {
 
     case RECIPE_REMOVED :
         return state.filter((recipe) => (recipe._id !== payload._id))
-
-    case TOGGLE_LIKE_RECIPE :
-      return state.map((recipe) => {
-        if (recipe._id === payload) {
-          return { ...recipe, liked: !recipe.liked }
-        }
-
-        return recipe
-      })
 
     default :
       return state

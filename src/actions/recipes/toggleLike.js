@@ -6,17 +6,15 @@ import {
   LOAD_SUCCESS
 } from '../loading'
 
-export const TOGGLE_LIKE_RECIPE = 'TOGGLE_LIKE_RECIPE'
-
 const api = new API()
 
-export default (recipe) => {
+export default (_id, currentlyLiked) => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
 
     const recipes = api.service('recipes')
 
-    recipes.patch(recipe._id, { liked: !recipe.liked })
+    recipes.patch(_id, { liked: !currentlyLiked })
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })

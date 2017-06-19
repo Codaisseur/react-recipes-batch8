@@ -39,11 +39,23 @@ export default () => {
           })
       })
       .catch((error) => {
-        dispatch({ type: APP_DONE_LOADING })
-        dispatch({
-          type: LOAD_ERROR,
-          payload: error.message
-        })
+        backend.find()
+          .then((result) => {
+            dispatch({ type: APP_DONE_LOADING })
+            dispatch({ type: LOAD_SUCCESS })
+
+            dispatch({
+              type: FETCHED_RECIPES,
+              payload: result.data
+            })
+          })
+          .catch((error) => {
+            dispatch({ type: APP_DONE_LOADING })
+            dispatch({
+              type: LOAD_ERROR,
+              payload: error.message
+            })
+          })
       })
 
   }
