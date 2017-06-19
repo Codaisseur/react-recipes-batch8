@@ -22,11 +22,6 @@ export default (newRecipe) => {
       .then((result) => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
-
-        dispatch({
-          type: CREATE_RECIPE,
-          payload: result
-        })
       })
       .catch((error) => {
         dispatch({ type: APP_DONE_LOADING })
