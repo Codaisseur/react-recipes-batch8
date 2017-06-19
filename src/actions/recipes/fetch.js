@@ -18,15 +18,25 @@ export default () => {
 
     const backend = api.service('recipes')
 
-    backend.find()
-      .then((result) => {
-        dispatch({ type: APP_DONE_LOADING })
-        dispatch({ type: LOAD_SUCCESS })
+    api.app.authenticate()
+      .then(() => {
+        backend.find()
+          .then((result) => {
+            dispatch({ type: APP_DONE_LOADING })
+            dispatch({ type: LOAD_SUCCESS })
 
-        dispatch({
-          type: FETCHED_RECIPES,
-          payload: result.data
-        })
+            dispatch({
+              type: FETCHED_RECIPES,
+              payload: result.data
+            })
+          })
+          .catch((error) => {
+            dispatch({ type: APP_DONE_LOADING })
+            dispatch({
+              type: LOAD_ERROR,
+              payload: error.message
+            })
+          })
       })
       .catch((error) => {
         dispatch({ type: APP_DONE_LOADING })
@@ -35,5 +45,6 @@ export default () => {
           payload: error.message
         })
       })
+
   }
 }

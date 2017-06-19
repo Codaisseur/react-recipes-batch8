@@ -8,8 +8,6 @@ import {
   LOAD_SUCCESS
 } from '../loading'
 
-export const CREATE_RECIPE = 'CREATE_RECIPE'
-
 const api = new API()
 
 export default (newRecipe) => {
